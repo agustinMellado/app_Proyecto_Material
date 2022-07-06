@@ -4,11 +4,10 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     //creo el objeto de rutas
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login',component: LoginComponent},
     //utilizo carga perezosa
-    {path: 'dashboard', loadChildren:()=>import('./components/dashboard/dashboard.module').then(x=>x.DashboardModule)},
-    {path: '**', redirectTo: 'login', pathMatch: 'full'}
+    {path: 'dashboard', loadChildren:()=>import('./components/dashboard/dashboard.module').then(x=>x.DashboardModule)}
 ];
 
 @NgModule({
