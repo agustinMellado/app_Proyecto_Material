@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+    //creo el objeto de rutas
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: 'login',component: LoginComponent},
+    //utilizo carga perezosa
+    {path: 'dashboard', loadChildren:()=>import('./components/dashboard/dashboard.module').then(x=>x.DashboardModule)},
+    {path: '**', redirectTo: 'login', pathMatch: 'full'}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

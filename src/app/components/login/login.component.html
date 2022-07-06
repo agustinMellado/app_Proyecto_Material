@@ -1,0 +1,46 @@
+<div class="body">
+  
+  <div class="login">
+    <!--Con ngIf indico que se mostrara cuando sea true loading-->
+  <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+
+    <!-- enlazo el formulario utilizando propety banding -->
+    <!--Con ngIf indico que se mostrara cuando sea false loading-->
+    <form *ngIf="!loading" [formGroup]="formulario" (ngSubmit)="ingresar()">
+      <img src="../../../assets/img/usuario.png" width="50%" />
+      <p>login works!</p>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <!--Utilizando la directiva de control formControlName indico que usuario(input) esta conectado con el usuario(propiedad).-->
+        <input
+          type="text"
+          autocomplete="off"
+          matInput
+          formControlName="usuario"
+        />
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <!--Utilizando la directiva de control formControlName indico que password(input) esta conectado con el password(propiedad).-->
+        <input
+          type="password"
+          autocomplete="off"
+          matInput
+          formControlName="password"
+        />
+      </mat-form-field>
+      <br />
+
+      <!--Con [disabled]="formulario.invalid" indico que mientras el formulario sea invalido no se active el boton. -->
+      <button
+        type="submit"
+        class="btn"
+        mat-raised-button
+        color="primary"
+        [disabled]="formulario.invalid"
+      >
+        Ingresar
+      </button>
+    </form>
+  </div>
+</div>
